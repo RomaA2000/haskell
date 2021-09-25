@@ -1,0 +1,35 @@
+name:                hw1
+version:             0.0.0.0
+synopsis:            hw1
+description:         hw1
+
+homepage:            https://github.com/RomaA2000
+license:             MIT
+license-file:        LICENSE
+author:              Roman Ageev
+maintainer:          ageevroma200@gmail.com
+copyright:           2020 Roman Ageev
+
+category:            Func
+build-type:          Simple
+extra-source-files:  License
+cabal-version:       >=1.10
+tested-with:         GHC == 8.6.5
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     Block1_1 Block1_2 Block1_3and2_1 Block2_2 Block3_1 Block3_2
+  ghc-options:         -Wno-missing-home-modules -Wall -XLambdaCase
+  extensions:          InstanceSigs
+  build-depends:       base >= 4.9 && < 5
+  default-language:    Haskell2010
+
+test-suite hw1-test
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             Main.hs
+  other-modules:       Block1_1Spec Block1_2Spec Block1_2PropSpec Block1_3and2_1Spec Block2_1PropSpec Block2_2Spec Block2_2PropSpec Block3_1Spec Block3_2Spec
+  ghc-options:         -Wno-missing-home-modules -threaded -rtsopts -with-rtsopts=-N -XLambdaCase
+  extensions:          InstanceSigs
+  build-depends:       base, hw1, hspec, hedgehog, tasty, tasty-hspec, tasty-hedgehog
+  default-language:    Haskell2010

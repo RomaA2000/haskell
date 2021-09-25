@@ -1,0 +1,52 @@
+name:                hw4
+version:             0.0.0.0
+synopsis:            hw4
+description:         hw4
+
+homepage:            https://github.com/RomaA2000
+license:             MIT
+license-file:        LICENSE
+author:              Roman Ageev
+maintainer:          ageevroma200@gmail.com
+copyright:           2020 Roman Ageev
+
+category:            Func
+build-type:          Simple
+extra-source-files:  License
+cabal-version:       >=1.10
+tested-with:         GHC == 8.6.5
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     Task1Perf Task1Norm Task2 Task6 Task7 Task8
+  ghc-options:         -Wno-missing-home-modules -Wall -XLambdaCase -Wmissing-methods
+  extensions:          InstanceSigs
+  build-depends:       base >= 4.13, filepath, directory, containers, deepseq >= 1.4.4.0, mtl, random >= 1.1, monad-par, abstract-par, monad-par-extras, microlens, ansi-terminal, comonad
+  default-language:    Haskell2010
+
+test-suite hw4-test
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             Main.hs
+  other-modules:       Task1Spec Task2Spec Task7Spec
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N -XLambdaCase
+  extensions:          InstanceSigs
+  build-depends:       base >= 4.13, hw4, hspec, hedgehog, tasty, tasty-hspec, tasty-hedgehog, mtl, QuickCheck, lifted-base, containers, directory, ansi-terminal, microlens
+  default-language:    Haskell2010
+
+benchmark hw4-bench
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      bench
+  main-is:             Main.hs
+  other-modules:       Task1Bench Task2Bench
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N4 -eventlog -Wall
+  build-depends:       base >= 4.13, hw4, filepath, directory, containers, deepseq >= 1.4.4.0, random >= 1.1, monad-par, abstract-par, monad-par-extras, criterion, ansi-terminal
+  default-language:    Haskell2010
+
+executable hw4-exe
+  hs-source-dirs:      app
+  main-is:             Main.hs
+  ghc-options:         -Wno-missing-home-modules -Wall -XLambdaCase -Wmissing-methods
+  extensions:          InstanceSigs
+  build-depends:       base >= 4.13, hw4, filepath, directory, containers, deepseq >= 1.4.4.0, mtl, random >= 1.1, monad-par, abstract-par, monad-par-extras, microlens, ansi-terminal, comonad
+  default-language:    Haskell2010

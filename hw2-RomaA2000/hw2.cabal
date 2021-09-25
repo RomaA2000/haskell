@@ -1,0 +1,35 @@
+name:                hw2
+version:             0.0.0.0
+synopsis:            hw2
+description:         hw2
+
+homepage:            https://github.com/RomaA2000
+license:             MIT
+license-file:        LICENSE
+author:              Roman Ageev
+maintainer:          ageevroma200@gmail.com
+copyright:           2020 Roman Ageev
+
+category:            Func
+build-type:          Simple
+extra-source-files:  License
+cabal-version:       >=1.10
+tested-with:         GHC == 8.6.5
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     Block1_1 Block1_2 Block1_3 Block2_1 Block2_2 Block3_1 Block3_2 Block3_3 Block3_4
+  ghc-options:         -Wno-missing-home-modules -Wall -XLambdaCase
+  extensions:          InstanceSigs
+  build-depends:       base >= 4.9 && < 5, mtl
+  default-language:    Haskell2010
+
+test-suite hw2-test
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             Main.hs
+  other-modules:       Block1_1Spec Block1_1PropSpec Block2_1Spec Block3Spec
+  ghc-options:         -Wno-missing-home-modules -threaded -rtsopts -with-rtsopts=-N -XLambdaCase
+  extensions:          InstanceSigs
+  build-depends:       base, hw2, hspec, hedgehog, tasty, tasty-hspec, tasty-hedgehog, mtl, QuickCheck
+  default-language:    Haskell2010
